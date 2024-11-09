@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::Post('/',[UserController::class,'login']);
-Route::Post('/cadastro',[UserController::class,'cadastro']);
+Route::Post('/',[UsuarioController::class,'login']);
+Route::Post('/cadastro',[UsuarioController::class,'cadastro']);
