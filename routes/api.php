@@ -15,5 +15,6 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-Route::Post('/',[UsuarioController::class,'login']);
-Route::Post('/cadastro',[UsuarioController::class,'cadastro']);
+
+Route::Post('/',[UsuarioController::class,'login'])->middleware([]'throttle:20,1');
+Route::Post('/cadastro',[UsuarioController::class,'cadastro'])->middleware('throttle:20,1');
