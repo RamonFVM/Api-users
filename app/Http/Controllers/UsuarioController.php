@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Models\Usuarios;
+namespace App\Http\Controllers;=
+use App\Models\usuarios;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+ 
 
 class UsuarioController extends Controller
 {
@@ -17,13 +18,14 @@ class UsuarioController extends Controller
         ]);
 
        
-        $usuario = Usuarios::where('email', $request->email)->first(); 
+        $usuario = usuarios::where('email', $request->email)->first(); 
 
         
         if ($usuario && Hash::check($request->senha, $usuario->senha)) {
-            $nome = $usuario->nome; 
+          
+            $token = $usuario->createToken('App Name')->plainTextToken;
 
-            return response()->json(['nome' => $nome], 200);
+            return response()->json(['nome' => $usuario->nome, 'token'=>$token ], 200);
         } else {
           
             return response()->json(['message' => 'Credenciais inválidas'], 401);
