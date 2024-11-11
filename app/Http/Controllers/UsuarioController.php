@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;=
+namespace App\Http\Controllers;
 use App\Models\usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -51,4 +51,5 @@ class UsuarioController extends Controller
 
         return response()->json(['message' => 'Cadastrado com sucesso'], 201); 
     }
+
 }
