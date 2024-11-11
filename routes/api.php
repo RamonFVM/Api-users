@@ -16,8 +16,8 @@ use App\Http\Controllers\UsuarioController;
 */
 
 
-Route::Post('/login',[UsuarioController::class,'login'])->middleware(['throttle:20,1']);
-Route::Post('/cadastro',[UsuarioController::class,'cadastro'])->middleware('throttle:20,1');
+Route::post('/login', [UsuarioController::class, 'login'])->name('login');
+Route::post('/cadastro',[UsuarioController::class,'cadastro'])->middleware('throttle:20,1');
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user(); 
 });
